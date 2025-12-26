@@ -1,0 +1,508 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #5a3921;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 头部样式 */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    /* 固定导航栏 */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #d2691e;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #5a3921;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #d2691e;
+}
+
+/*搜索框*/
+.search-box input {
+    padding: 6px 12px;
+    border: 2px solid #5a3921;
+    border-radius: 20px;
+    width: 180px;
+    outline: none;
+    transition: width .3s;
+}
+
+/*点击搜索时宽度变化*/
+.search-box input:focus {
+    width: 200px;
+}
+
+/* 购物车按钮样式 */
+.cart-btn {
+    position: relative;
+    background: none;
+    border: none;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.cart-count {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    background-color: #d2691e;
+    color: white;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* 购物车弹窗样式 */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+}
+
+.cart-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background-color: white;
+    z-index: 1001;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);/* 初始位置在右侧屏幕外 */
+    transition: transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 滑入屏幕 */
+.cart-modal.open {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background-color: #b47148;
+}
+
+.cart-header h2 {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #5a3921;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+
+.cart-items {
+    flex: 1;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.cart-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-weight: 600;
+    color: #5a3921;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    color: #5a3921;
+    font-weight: 700;
+}
+
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #701d1d;
+    background-color: #ffffff;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #5a3921;
+}
+
+.cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-btn,
+.clear-cart-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.checkout-btn {
+    background-color: #d2691e;
+    color: white;
+}
+
+.checkout-btn:hover {
+    background-color: #a0522d;
+}
+
+.clear-cart-btn {
+    background-color: #f5f5f5;
+    color: #5a3921;
+}
+
+.clear-cart-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 40px 20px;
+    color: #777;
+}
+
+
+/*  轮播图样式 */
+.carousel-section {
+    padding: 40px 0;
+}
+/* 装饰性下划线效果 */
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: #8b4513;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background-color: #ff9e6d;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);/* 关键：向左移动自身宽度的一半 */
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    height: 500px;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+    height: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    flex: 0 0 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/*轮播图底部文字说明区域的样式*/
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 30px;
+}
+
+.carousel-caption h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption p {
+    font-size: 18px;
+    max-width: 600px;
+}
+
+
+
+/*  产品展示样式 */
+.products-section {
+    padding: 60px 0;
+    background-color: white;
+}
+
+.products-grid {
+    display: grid;
+    /* 自动换行 ,每列最小280像素宽度*/
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.product-img {
+    height: 200px;
+    overflow: hidden; /* 超出容器的内容隐藏 */
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*等比缩放填充，裁剪超出部分 */
+}
+
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #693b19;
+}
+
+.product-info p {
+    color: #777;
+    margin-bottom: 15px;
+    height: 60px;
+    overflow: hidden;
+}
+
+.product-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #693b19;
+}
+
+.add-to-cart {
+    background-color: #ff9e6d;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+   
+}
+
+
+/*  页脚样式 */
+footer {
+    background-color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+    
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: #4e3122;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.connect-img img {
+    width: 100px;
+    /* 固定宽度 */
+    height: 100px;
+    /* 固定高度（方形）*/
+    object-fit: cover;
+    /* 保持比例填充 */
+}
+
+
+.copyright {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+}
+
+
+/*详情页*/
+.detail-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    z-index: 2500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-box {
+    background: #fff;
+    width: 480px;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .2);
+    position: relative;
+}
+
+.detail-close {
+  position: absolute;
+  top: 2px;
+  right: 14px;
+  border: 0;
+  color: #5f331c;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 24px;   /* 大小按需 */
+  background: none;  /* 去掉默认灰底 */
+}
+
+.detail-box img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px
+}
+
+.detail-info {
+    text-align: left;
+    margin: 15px 0;
+}
+
+.detail-info p {
+    margin: 6px 0;
+    color: #666;
+}
